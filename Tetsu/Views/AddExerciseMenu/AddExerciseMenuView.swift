@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct AddExerciseMenuView: View {
+    let exercises: [Exercise]
+    var onAdd: (Exercise) -> Void
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            ForEach(exercises) { exercise in
+                Button{
+                    onAdd(exercise)
+                    dismiss()
+                } label: {
+                    Text(exercise.name)
+                        .padding(.vertical, 8)
+                }
+            }
+        }
+        .navigationTitle("Add Exercise")
     }
 }
 
-#Preview {
-    AddExerciseMenuView()
-}
+//#Preview {
+//    AddExerciseMenuView(sampleExercises)
+//}

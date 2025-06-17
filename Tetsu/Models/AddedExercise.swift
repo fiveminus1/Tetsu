@@ -7,9 +7,17 @@
 
 import Foundation
 
-struct AddedExercise: Identifiable {
+struct AddedExercise: Identifiable{
     let id = UUID()
-    let name: String
-    let sets: Int
-    let reps: Int
+    let exercise: Exercise
+    var sets: Int
+    var reps: Int
+}
+
+extension AddedExercise  {
+    init(exercise: Exercise){
+        self.exercise = exercise
+        self.sets = 0
+        self.reps = 0
+    }
 }

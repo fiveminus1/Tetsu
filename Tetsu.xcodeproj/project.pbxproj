@@ -12,6 +12,7 @@
 		E441DDB32E0142AE007FEEB3 /* ActiveWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E441DDB22E0142AE007FEEB3 /* ActiveWorkoutView.swift */; };
 		E441DDB62E0147D0007FEEB3 /* AddedExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E441DDB52E0147D0007FEEB3 /* AddedExercise.swift */; };
 		E441DDB92E014C58007FEEB3 /* AddExerciseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E441DDB82E014C58007FEEB3 /* AddExerciseMenuView.swift */; };
+		E441DDBC2E016549007FEEB3 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E441DDBB2E016549007FEEB3 /* Exercise.swift */; };
 		E4E1B1372E010F5C00205F2D /* TetsuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E1B1362E010F5C00205F2D /* TetsuApp.swift */; };
 		E4E1B1392E010F5C00205F2D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E1B1382E010F5C00205F2D /* ContentView.swift */; };
 		E4E1B13B2E010F6000205F2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4E1B13A2E010F6000205F2D /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		E441DDB22E0142AE007FEEB3 /* ActiveWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkoutView.swift; sourceTree = "<group>"; };
 		E441DDB52E0147D0007FEEB3 /* AddedExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedExercise.swift; sourceTree = "<group>"; };
 		E441DDB82E014C58007FEEB3 /* AddExerciseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseMenuView.swift; sourceTree = "<group>"; };
+		E441DDBB2E016549007FEEB3 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		E4E1B1332E010F5B00205F2D /* Tetsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tetsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E1B1362E010F5C00205F2D /* TetsuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetsuApp.swift; sourceTree = "<group>"; };
 		E4E1B1382E010F5C00205F2D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				E441DDB52E0147D0007FEEB3 /* AddedExercise.swift */,
+				E441DDBB2E016549007FEEB3 /* Exercise.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E416D08D2E0132FE0081CFB0 /* HomeView.swift in Sources */,
+				E441DDBC2E016549007FEEB3 /* Exercise.swift in Sources */,
 				E416D08F2E0133250081CFB0 /* HistoryView.swift in Sources */,
 				E4E1B1392E010F5C00205F2D /* ContentView.swift in Sources */,
 				E441DDB32E0142AE007FEEB3 /* ActiveWorkoutView.swift in Sources */,

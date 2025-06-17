@@ -9,9 +9,16 @@ import SwiftUI
 
 struct ActiveWorkoutView: View {
     @State private var addedExercises: [AddedExercise] = [
-        AddedExercise(name: "Squats", sets: 4, reps: 10)
+        AddedExercise(exercise: Exercise(name: "Squats"), sets: 4, reps: 10)
     ]
     @State private var timer: Int = 0
+    @State private var showingAddExerciseMenu = false
+    
+    let sampleExercises: [Exercise] = [ //TODO: replace with db
+        Exercise(name: "Squat"),
+        Exercise(name: "Bench"),
+        Exercise(name: "Deadlift")
+    ]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16){
@@ -41,17 +48,28 @@ struct ActiveWorkoutView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
-                NavigationLink(destination: AddExerciseMenuView()){
+                Button {
+                    showingAddExerciseMenu = true
+                } label: {
                     Image(systemName: "plus")
-                        .imageScale(.large)
                 }
+            }
+        }
+        .sheet(isPresented: $showingAddExerciseMenu) {
+            NavigationStack{
+                AddExerciseMenuView(
+                    exercises: sampleExercises,
+                    onAdd: { newExercise in
+                        let added = AddedExercise(exercise: newExercise)
+                        addedExercises.append(added)
+                    }
+                )
             }
         }
         .onAppear {
             startTimer()
         }
     }
-    
     func formattedTime(_ seconds: Int) -> String{
         let mins = seconds / 60
         let secs = seconds % 60
@@ -62,31 +80,31 @@ struct ActiveWorkoutView: View {
             timer += 1
         }
     }
-}
-
-struct ExerciseCard: View{
-    let exercise: AddedExercise
     
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.indigo.opacity(0.25))
-            VStack(alignment: .leading){
-                Text(exercise.name)
-                    .font(.headline)
-                Text("Sets: \(exercise.sets) Reps: \(exercise.reps)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+    struct ExerciseCard: View{
+        let exercise: AddedExercise
+        
+        var body: some View {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.indigo.opacity(0.25))
+                VStack(alignment: .leading){
+                    Text(exercise.exercise.name)
+                        .font(.headline)
+                    Text("Sets: \(exercise.sets) Reps: \(exercise.reps)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: 80)
+            
+            
         }
-        .frame(height: 80)
-        
-        
     }
-}
-
-#Preview {
-    ActiveWorkoutView()
+    
+    //#Preview {
+    //    ActiveWorkoutView()
+    //}
 }
