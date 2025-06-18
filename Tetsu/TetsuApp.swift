@@ -22,7 +22,7 @@ struct TetsuApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AuthGateView()
         }
     }
 }

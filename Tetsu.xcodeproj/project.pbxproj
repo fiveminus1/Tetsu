@@ -34,6 +34,8 @@
 		E441DDEB2E027CF6007FEEB3 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E441DDEA2E027CF6007FEEB3 /* FirebaseFirestoreCombine-Community */; };
 		E441DDED2E027CF6007FEEB3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E441DDEC2E027CF6007FEEB3 /* FirebaseStorage */; };
 		E441DDEF2E027CF6007FEEB3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = E441DDEE2E027CF6007FEEB3 /* FirebaseStorageCombine-Community */; };
+		E441DDF22E027E6A007FEEB3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E441DDF12E027E6A007FEEB3 /* LoginView.swift */; };
+		E441DDF42E028032007FEEB3 /* AuthGateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E441DDF32E028032007FEEB3 /* AuthGateView.swift */; };
 		E4E1B1372E010F5C00205F2D /* TetsuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E1B1362E010F5C00205F2D /* TetsuApp.swift */; };
 		E4E1B1392E010F5C00205F2D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E1B1382E010F5C00205F2D /* ContentView.swift */; };
 		E4E1B13B2E010F6000205F2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4E1B13A2E010F6000205F2D /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		E441DDBB2E016549007FEEB3 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		E441DDCD2E027BBB007FEEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E441DDD02E027C05007FEEB3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		E441DDF12E027E6A007FEEB3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E441DDF32E028032007FEEB3 /* AuthGateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGateView.swift; sourceTree = "<group>"; };
 		E4E1B1332E010F5B00205F2D /* Tetsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tetsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E1B1362E010F5C00205F2D /* TetsuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetsuApp.swift; sourceTree = "<group>"; };
 		E4E1B1382E010F5C00205F2D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 		E416D0892E01321E0081CFB0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E441DDF02E027E5C007FEEB3 /* Auth */,
 				E441DDB72E014C46007FEEB3 /* AddExerciseMenu */,
 				E441DDB12E01429D007FEEB3 /* ActiveWorkout */,
 				E416D08B2E0132D60081CFB0 /* History */,
@@ -151,6 +156,15 @@
 				E441DDD02E027C05007FEEB3 /* AuthManager.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E441DDF02E027E5C007FEEB3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E441DDF12E027E6A007FEEB3 /* LoginView.swift */,
+				E441DDF32E028032007FEEB3 /* AuthGateView.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		E4E1B12A2E010F5B00205F2D = {
@@ -274,7 +288,9 @@
 				E4E1B1392E010F5C00205F2D /* ContentView.swift in Sources */,
 				E441DDB32E0142AE007FEEB3 /* ActiveWorkoutView.swift in Sources */,
 				E4E1B1372E010F5C00205F2D /* TetsuApp.swift in Sources */,
+				E441DDF42E028032007FEEB3 /* AuthGateView.swift in Sources */,
 				E441DDB92E014C58007FEEB3 /* AddExerciseMenuView.swift in Sources */,
+				E441DDF22E027E6A007FEEB3 /* LoginView.swift in Sources */,
 				E441DDB62E0147D0007FEEB3 /* AddedExercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
