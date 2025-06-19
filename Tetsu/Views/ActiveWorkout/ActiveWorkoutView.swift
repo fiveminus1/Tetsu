@@ -13,6 +13,9 @@ struct ActiveWorkoutView: View {
     ]
     @State private var timer: Int = 0
     @State private var showingAddExerciseMenu = false
+    @State private var showingSummary = false
+    @State private var finishedWorkout: WorkoutSession? = nil
+    
     @EnvironmentObject var dataManager: WorkoutDataManager
     
     let sampleExercises: [Exercise] = [ //TODO: replace with db
@@ -22,63 +25,70 @@ struct ActiveWorkoutView: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16){
-            VStack(alignment: .leading, spacing: 4){
-                Text("Active Workout")
-                    .font(.largeTitle)
-                    .bold()
-                Text("\(formattedTime(timer))")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            .padding(.horizontal)
-            
-            ScrollView{
-                VStack(spacing: 12) {
-                    if addedExercises.isEmpty {
-                        Text("No exercises added yet.")
-                            .foregroundColor(.secondary)
-                    } else {
-                        ForEach(addedExercises) { addedExercise in
-                            ExerciseCard(exercise: addedExercise)
-                        }
-                    }
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 16){
+                VStack(alignment: .leading, spacing: 4){
+                    Text("Active Workout")
+                        .font(.largeTitle)
+                        .bold()
+                    Text("\(formattedTime(timer))")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
                 .padding(.horizontal)
+                
+                ScrollView{
+                    VStack(spacing: 12) {
+                        if addedExercises.isEmpty {
+                            Text("No exercises added yet.")
+                                .foregroundColor(.secondary)
+                        } else {
+                            ForEach(addedExercises) { addedExercise in
+                                ExerciseCard(exercise: addedExercise)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                
+                Button(action: finishWorkout){
+                    Text("Finish Workout")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                }
+                .padding([.horizontal, .bottom])
             }
-            
-            Button(action: finishWorkout){
-                Text("Finish Workout")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-            }
-            .padding([.horizontal, .bottom])
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing){
-                Button {
-                    showingAddExerciseMenu = true
-                } label: {
-                    Image(systemName: "plus")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button {
+                        showingAddExerciseMenu = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
             }
-        }
-        .sheet(isPresented: $showingAddExerciseMenu) {
-            NavigationStack{
-                AddExerciseMenuView(
-                    exercises: sampleExercises,
-                    onAdd: { newExercise in
-                        let added = AddedExercise(exercise: newExercise)
-                        addedExercises.append(added)
-                    }
-                )
+            .sheet(isPresented: $showingAddExerciseMenu) {
+                NavigationStack{
+                    AddExerciseMenuView(
+                        exercises: sampleExercises,
+                        onAdd: { newExercise in
+                            let added = AddedExercise(exercise: newExercise)
+                            addedExercises.append(added)
+                        }
+                    )
+                }
+            }
+            .onAppear {
+                startTimer()
             }
         }
-        .onAppear {
-            startTimer()
+        .navigationDestination(isPresented: $showingSummary){
+            if let workout = finishedWorkout {
+                PostWorkoutView(workout: workout)
+            }
         }
     }
     func formattedTime(_ seconds: Int) -> String{
@@ -100,6 +110,9 @@ struct ActiveWorkoutView: View {
             duration: timer
         )
         dataManager.saveWorkout(session)
+        finishedWorkout = session
+        showingSummary = true
+        
         addedExercises = []
         timer = 0
     }
