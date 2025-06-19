@@ -22,7 +22,8 @@ struct TetsuApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthGateView()
+            ContentView()
+                .environmentObject(WorkoutDataManager())
         }
     }
 }

@@ -13,6 +13,7 @@ struct ActiveWorkoutView: View {
     ]
     @State private var timer: Int = 0
     @State private var showingAddExerciseMenu = false
+    @EnvironmentObject var dataManager: WorkoutDataManager
     
     let sampleExercises: [Exercise] = [ //TODO: replace with db
         Exercise(name: "Squat"),
@@ -45,6 +46,16 @@ struct ActiveWorkoutView: View {
                 }
                 .padding(.horizontal)
             }
+            
+            Button(action: finishWorkout){
+                Text("Finish Workout")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
+            }
+            .padding([.horizontal, .bottom])
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing){
@@ -81,6 +92,18 @@ struct ActiveWorkoutView: View {
         }
     }
     
+    func finishWorkout(){
+        let session = WorkoutSession(
+            id: UUID(),
+            date: Date(),
+            exercises: addedExercises,
+            duration: timer
+        )
+        dataManager.saveWorkout(session)
+        addedExercises = []
+        timer = 0
+    }
+    
     struct ExerciseCard: View{
         let exercise: AddedExercise
         
@@ -103,8 +126,8 @@ struct ActiveWorkoutView: View {
             
         }
     }
-    
-    //#Preview {
-    //    ActiveWorkoutView()
-    //}
+}
+
+#Preview {
+    ActiveWorkoutView()
 }
