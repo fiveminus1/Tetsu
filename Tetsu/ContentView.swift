@@ -19,6 +19,10 @@ struct ContentView: View {
                     .tabItem{
                         Label("History", systemImage: "clock")
                     }
+                ProfileView()
+                    .tabItem{
+                        Label("Profile", systemImage: "person.fill")
+                    }
             }
         }
     }

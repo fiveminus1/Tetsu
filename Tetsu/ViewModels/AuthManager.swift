@@ -14,7 +14,10 @@ class AuthManager: ObservableObject{
     
     init(){
         handle = Auth.auth().addStateDidChangeListener{ _, user in
-            self.user = user
+            DispatchQueue.main.async {
+                self.user = user
+            }
+            
         }
     }
     
