@@ -31,18 +31,23 @@ struct PostWorkoutView: View {
                             .font(.subheadline)
                     }
                 }
+                .frame(maxHeight: 250)
+                
+                Spacer()
+                
+                Button(action: {
+                    dismiss()
+                }) {
+                    Text("Return")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                }
+                .padding(.horizontal)
             }
             .padding()
-            .toolbar{
-                ToolbarItem(placement: .navigationBarLeading){
-                    Button{
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.primary)
-                    }
-                }
-            }
         }
     }
     
