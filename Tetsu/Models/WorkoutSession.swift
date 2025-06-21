@@ -12,4 +12,11 @@ struct WorkoutSession: Identifiable, Codable {
     let date: Date
     let exercises: [AddedExercise]
     let duration: Int?
+    
+    init(id: UUID = UUID(), date: Date, exercises: [AddedExercise] = [], duration: Int? = nil){
+        self.id = id
+        self.date = date
+        self.exercises = exercises
+        self.duration = duration
+    }
 }
