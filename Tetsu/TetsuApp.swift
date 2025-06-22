@@ -19,13 +19,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct TetsuApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var workoutDataManager = WorkoutDataManager()
     @StateObject private var authManager = AuthManager()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(workoutDataManager)
                 .environmentObject(authManager)
-                .environmentObject(WorkoutDataManager())
         }
     }
 }

@@ -10,10 +10,12 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class WorkoutDataManager: ObservableObject{
+    @Published var workouts: [WorkoutSession] = []
     private let localStore = LocalWorkoutStore()
     
     func saveWorkout(_ session: WorkoutSession){
         localStore.saveWorkout(session)
+        workouts.append(session)
         
         if let user = Auth.auth().currentUser{
             saveToFirestore(session, userId: user.uid)
