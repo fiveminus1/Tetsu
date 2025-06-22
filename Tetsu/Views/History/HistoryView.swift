@@ -57,11 +57,6 @@ struct WorkoutCardView: View{
         .shadow(radius: 2)
     }
     
-    func formattedTime(_ seconds: Int) -> String{
-        let mins = seconds / 60
-        let secs = seconds % 60
-        return String(format: "%02d:%02d", mins, secs)
-    }
 }
 
 #Preview {

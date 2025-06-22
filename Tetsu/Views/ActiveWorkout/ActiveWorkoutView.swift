@@ -91,11 +91,7 @@ struct ActiveWorkoutView: View {
             }
         }
     }
-    func formattedTime(_ seconds: Int) -> String{
-        let mins = seconds / 60
-        let secs = seconds % 60
-        return String(format: "%02d:%02d", mins, secs)
-    }
+
     func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             timer += 1
