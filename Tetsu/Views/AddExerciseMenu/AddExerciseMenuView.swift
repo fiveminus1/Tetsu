@@ -13,21 +13,28 @@ struct AddExerciseMenuView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        List {
-            ForEach(exercises) { exercise in
-                Button{
-                    onAdd(exercise)
-                    dismiss()
-                } label: {
-                    Text(exercise.name)
-                        .padding(.vertical, 8)
+        NavigationStack{
+            List {
+                ForEach(exercises) { exercise in
+                    Button{
+                        onAdd(exercise)
+                        dismiss()
+                    } label: {
+                        Text(exercise.name)
+                            .padding(.vertical, 8)
+                    }
                 }
             }
+            .navigationTitle("Add Exercise")
         }
-        .navigationTitle("Add Exercise")
     }
 }
 
-//#Preview {
-//    AddExerciseMenuView(sampleExercises)
-//}
+#Preview {
+    let sampleExercises = [
+        Exercise(name: "Squat"),
+        Exercise(name: "Deadlift"),
+        Exercise(name: "Overhead Press")
+    ]
+    return AddExerciseMenuView(exercises: sampleExercises, onAdd: { _ in })
+}

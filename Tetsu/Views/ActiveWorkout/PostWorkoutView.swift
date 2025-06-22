@@ -52,6 +52,16 @@ struct PostWorkoutView: View {
     }
 }
 
-//#Preview {
-//    PostWorkoutView()
-//}
+#Preview {
+    let sampleWorkout = WorkoutSession(
+        id: UUID(),
+        date: Date(),
+        exercises: [
+            AddedExercise(exercise: Exercise(name: "Bench Press"), sets: 3, reps: 8),
+            AddedExercise(exercise: Exercise(name: "Squat"), sets: 4, reps: 10)
+        ],
+        duration: 900
+    )
+    
+    return PostWorkoutView(workout: sampleWorkout)
+}
