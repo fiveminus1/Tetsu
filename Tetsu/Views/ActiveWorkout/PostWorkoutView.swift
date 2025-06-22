@@ -27,7 +27,7 @@ struct PostWorkoutView: View {
                     VStack(alignment: .leading){
                         Text(addedExercise.exercise.name)
                             .font(.headline)
-                        Text("Sets: \(addedExercise.sets), Reps: \(addedExercise.reps)")
+                        Text("Weight: \(addedExercise.weight.formatted(.number.precision(.fractionLength(0...2)))), Sets: \(addedExercise.sets), Reps: \(addedExercise.reps)")
                             .font(.subheadline)
                     }
                 }
@@ -57,8 +57,8 @@ struct PostWorkoutView: View {
         id: UUID(),
         date: Date(),
         exercises: [
-            AddedExercise(exercise: Exercise(name: "Bench Press"), sets: 3, reps: 8),
-            AddedExercise(exercise: Exercise(name: "Squat"), sets: 4, reps: 10)
+            AddedExercise(exercise: Exercise(name: "Bench Press"), weight: 135, sets: 3, reps: 8),
+            AddedExercise(exercise: Exercise(name: "Squat"), weight: 315.5, sets: 4, reps: 10)
         ],
         duration: 900
     )

@@ -46,7 +46,7 @@ struct WorkoutCardView: View{
                     .foregroundColor(.secondary)
             }
             ForEach(workout.exercises){ exercise in
-                Text("\(exercise.exercise.name) - \(exercise.sets)x\(exercise.reps)")
+                Text("\(exercise.exercise.name) -  \(exercise.weight.formatted(.number.precision(.fractionLength(0...2)))) @ \(exercise.sets)x\(exercise.reps)")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -65,8 +65,8 @@ struct WorkoutCardView: View{
         id: UUID(),
         date: Date(),
         exercises: [
-            AddedExercise(exercise: Exercise(name: "Bench"), sets: 3, reps: 8),
-            AddedExercise(exercise: Exercise(name: "Squat"), sets: 3, reps: 8),
+            AddedExercise(exercise: Exercise(name: "Bench"), weight: 135, sets: 3, reps: 8),
+            AddedExercise(exercise: Exercise(name: "Squat"), weight: 405.25, sets: 3, reps: 8),
         ],
         duration: 842
     ))

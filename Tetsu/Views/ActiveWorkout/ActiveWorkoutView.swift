@@ -123,7 +123,7 @@ struct ActiveWorkoutView: View {
                 VStack(alignment: .leading){
                     Text(exercise.exercise.name)
                         .font(.headline)
-                    Text("Sets: \(exercise.sets) Reps: \(exercise.reps)")
+                    Text("Weight: \(exercise.weight.formatted(.number.precision(.fractionLength(0...2)))) Sets: \(exercise.sets) Reps: \(exercise.reps)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
