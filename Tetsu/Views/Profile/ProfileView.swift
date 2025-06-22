@@ -39,10 +39,12 @@ struct ProfileView: View {
                                 .padding()
                                 .background(Color(.systemGray6))
                                 .cornerRadius(8)
+                            
                             SecureField("Password", text: $password)
                                 .padding()
                                 .background(Color(.systemGray6))
                                 .cornerRadius(8)
+                            
                             Button("Log In"){
                                 authManager.signInWithEmail(email: email, password: password)
                             }
@@ -52,8 +54,7 @@ struct ProfileView: View {
                             .background(Color.indigo)
                             .foregroundColor(.white)
                             .cornerRadius(10)
-                            
-                            
+            
                             Button("Register"){
                                 authManager.signUp(email: email, password: password)
                             }
@@ -63,6 +64,14 @@ struct ProfileView: View {
                             .background(Color.indigo)
                             .foregroundColor(.white)
                             .cornerRadius(10)
+                            
+                            if let error = authManager.authError {
+                                Text(error)
+                                    .foregroundColor(.red)
+                                    .font(.footnote)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal)
+                            }
                         }
                         .frame(maxWidth: 400)
                     }
